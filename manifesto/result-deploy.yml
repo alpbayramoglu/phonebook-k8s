@@ -15,16 +15,16 @@ spec:
         app: result
     spec:
       containers:
-      - image: devalps/results
+      - image: devalps/result-pb
         name: result
         ports:
         - containerPort: 80
         env:
         - name: MYSQL_PASSWORD
-          valueFrom:
+          valueFrom: 
             secretKeyRef:
-              name: mysqlsecret
-              key: mysql-admin-password
+              name: mysql-secret
+              key: MYSQL_PASSWORD
         envFrom:
           - configMapRef:
-              name: servers-cm
+              name: webserver-cm 

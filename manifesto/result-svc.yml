@@ -5,6 +5,7 @@ metadata:
     app: result
   name: result
 spec:
+  type: NodePort 
   ports:
   - port: 80
     protocol: TCP
@@ -12,4 +13,3 @@ spec:
     nodePort: 30002
   selector:
     app: result
-  type: NodePort

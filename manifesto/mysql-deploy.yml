@@ -21,22 +21,23 @@ spec:
       containers:
       - image: mysql:5.7
         name: mysql
-        env:
+        env: 
         - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
+          valueFrom: 
             secretKeyRef:
-              name: mysqlsecret
-              key: mysql-root-password
+              name: mysql-secret
+              key: MYSQL_ROOT_PASSWORD
         - name: MYSQL_PASSWORD
-          valueFrom:
+          valueFrom: 
             secretKeyRef:
-              name: mysqlsecret
-              key: mysql-admin-password
+              name: mysql-secret
+              key: MYSQL_PASSWORD 
         envFrom:
-          - configMapRef:
-              name: mysql-cm
+        - configMapRef:
+           name: mysql-cm
+
         ports:
         - containerPort: 3306
         volumeMounts:
-          - mountPath: "var/lib/mysql"
-            name: mysql-pv-storage
+        - mountPath: "var/lib/mysql"
+          name: mysql-pv-storage  

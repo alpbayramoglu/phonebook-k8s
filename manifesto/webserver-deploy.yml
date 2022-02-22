@@ -15,7 +15,7 @@ spec:
         app: webserver
     spec:
       containers:
-      - image: devalps/webserver
+      - image: devalps/webserver-pb
         name: webserver
         ports:
         - containerPort: 80
@@ -23,8 +23,9 @@ spec:
         - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mysqlsecret
-              key: mysql-admin-password
+              name: mysql-secret
+              key: MYSQL_PASSWORD
         envFrom:
           - configMapRef:
-              name: servers-cm
+              name: webserver-cm
+        
